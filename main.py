@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+
 load_dotenv()
 api_key = os.environ.get("OPENROUTER_API_KEY")
 
@@ -24,6 +25,9 @@ def main():
             }
         ],
     )
+    print("Prompt tokens: ", response.usage.prompt_tokens)
+    print("Response tokens: ", response.usage.completion_tokens)
+    print("Response:")
     print(response.choices[0].message.content)
 
 if __name__ == "__main__":
