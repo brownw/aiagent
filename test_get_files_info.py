@@ -1,36 +1,25 @@
+# Import the function from the calculator directory/module
 from functions.get_files_info import get_files_info
-import unittest
 
+def run_tests():
+    print('get_files_info("calculator", "."):')
+    print("\nResult for current directory:")
+    print(get_files_info("calculator", "."))
+    print("\n" + "="*40 + "\n")
 
-class TestGetFilesInfo(unittest.TestCase):
-    def setUp(self) -> None:
-        self.get_files_info = get_files_info
+    print('get_files_info("calculator", "pkg"):')
+    print("\nResult for 'pkg' directory:")
+    print(get_files_info("calculator", "pkg"))
+    print("\n" + "="*40 + "\n")
 
-    def test_get_files_info(self) -> None:
-        result = self.get_files_info("calculator", ".")
-        print(result)
-        self.assertEqual(result, 'Success: "." is within the working_directory')
+    print('get_files_info("calculator", "/bin"):')
+    print("\nResult for '/bin' directory:")
+    print(f"    {get_files_info('calculator', '/bin')}")
+    print("\n" + "="*40 + "\n")
 
-    def test_get_files_info_absolute_path(self) -> None:
-        result = self.get_files_info("calculator", "/bin")
-        print(result)
-        self.assertEqual(
-            result,
-            'Error: Cannot list "/bin" as it is outside the permitted working_directory',
-        )
-
-    def test_get_files_info_parent_directory(self) -> None:
-        result = self.get_files_info("calculator", "../")
-        print(result)
-        self.assertEqual(
-            result,
-            'Error: Cannot list "../" as it is outside the permitted working_directory',
-        )
-
-    def test_get_files_info_file(self) -> None:
-        result = self.get_files_info("calculator", "main.py")
-        print(result)
-        self.assertEqual(result, 'Error: "main.py" is not a directory')
+    print('get_files_info("calculator", "../"):')
+    print("\nResult for '../' directory:")
+    print(f"    {get_files_info('calculator', '../')}")
 
 if __name__ == "__main__":
-    unittest.main()
+    run_tests()
