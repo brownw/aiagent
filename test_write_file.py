@@ -1,0 +1,18 @@
+# Import the function from the calculator directory/module
+from functions.write_file import write_file
+
+def run_tests():
+    # Test case 1
+    result1 = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
+    print(result1)  
+
+    # Test case 2
+    result2 = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
+    print(result2)  
+
+    # Test case 3:
+    result3 = write_file("calculator", "/tmp/temp.txt", "this should not be allowed")
+    print(result3) 
+
+if __name__ == "__main__":
+    run_tests()
